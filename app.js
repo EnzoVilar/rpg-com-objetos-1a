@@ -1,42 +1,28 @@
-const guerreiro = {
-    nome: "Thorin",
-    vida: 60,
-    ataque: 20,
+class Personagem {
+    constructor(nome, vida, ataque) {
+        this.nome = nome,
+            this.vida = vida,
+            this.ataque = ataque
 
-    causaDano: function(personagem) {
-        personagem.recebeDano(this.ataque)
-    },
-
-    recebeDano: function(quantidade) {
-        this.vida = this.vida - quantidade
     }
-}
 
-const mago = {
-    nome: "Gandalfe",
-    vida: 60,
-    ataque: 35,
-
-    recebeDano: function(quantidade) {
-        this.vida = this.vida - quantidade
-    },
-
-    causaDano: function(personagem) {
+    causaDano(personagem) {
         personagem.recebeDano(this.ataque)
-    },
-}
-const arqueiro = {
-    nome: "Legolas",
-    vida: 80,
-    ataque: 25,
-
-    causaDano: function(personagem) {
-        personagem.recebeDano(this.ataque)
-    },
-
-    recebeDano: function(quantidade) {
-        this.vida = this.vida - quantidade
     }
+
+    recebeDano(quantidade) {
+        this.vida = this.vida - quantidade
+
+        if (this.vida <= 0) {
+            this.vida = "eliminado"
+
+        }
+    }
+
 }
-guerreiro.causaDano(mago)
-console.log(mago.vida)
+
+const guerreiro = new Personagem("Guerreiro", 80, 25)
+
+const druida = new Personagem("Mago", 60, 35)
+
+console.log(druida)
