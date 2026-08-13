@@ -25,4 +25,17 @@ const guerreiro = new Personagem("Guerreiro", 80, 25)
 
 const druida = new Personagem("Mago", 60, 35)
 
-console.log(druida)
+const mago = new Personagem("Gandalfe", 60, 35)
+
+const arqueiro = new Personagem("Legolas", 80, 25)
+
+const raven = new Personagem("Raven", 40, 20)
+
+const elara = new Personagem("Elara", 80, 40)
+
+const dante = new Personagem("Dante", 21, 17)
+
+arqueiro.causaDano(raven)
+mago.causaDano(dante)
+console.log(raven.vida)
+console.log(dante.vida)
