@@ -19,6 +19,14 @@ class Personagem {
         }
     }
 
+    estaVivo() {
+        return this.vida > 0
+    }
+
+    mostrarStatus() {
+        console.log(this.nome + " | Vida: " + this.vida)
+    }
+
 }
 
 const guerreiro = new Personagem("Guerreiro", 80, 25)
@@ -35,7 +43,7 @@ const elara = new Personagem("Elara", 80, 40)
 
 const dante = new Personagem("Dante", 21, 17)
 
-arqueiro.causaDano(raven)
-mago.causaDano(dante)
-console.log(raven.vida)
-console.log(dante.vida)
+druida.causaDano(mago)
+druida.causaDano(mago)
+
+console.log(mago.estaVivo())
