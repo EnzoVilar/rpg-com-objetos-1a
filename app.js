@@ -2,6 +2,7 @@ class Personagem {
     constructor(nome, vida, ataque, defesa) {
         this.nome = nome,
             this.vida = vida,
+            this.vidaMax = vida,
             this.ataque = ataque,
             this.defesa = defesa
 
@@ -9,6 +10,10 @@ class Personagem {
 
     curar(quantidade) {
         this.vida = this.vida + quantidade
+
+        if (this.vida > this.vidaMax) {
+            this.vida = this.vidaMax
+        }
     }
 
     causaDano(personagem) {
@@ -40,13 +45,32 @@ class Personagem {
 
 }
 
-const guerreiro = new Personagem("Guerreiro", 80, 25, 15)
+class Guerreiro extends Personagem {
+    golpePesado(personagem) {
+        personagem.recebeDano(this.ataque * 2)
+    }
+
+}
+
+class Mago extends Personagem {
+    bolaDeFogo(personagem) {
+        personagem.recebeDano(this.ataque + 15)
+    }
+
+}
+class Arqueiro extends Personagem {
+    tiroPreciso(personagem) {
+        personagem.recebeDano(this.ataque + 10)
+    }
+}
+
+const guerreiro = new Guerreiro("Guerreiro", 80, 25, 15)
 
 const druida = new Personagem("Mago", 60, 35, 8)
 
-const mago = new Personagem("Gandalfe", 60, 35, 5)
+const mago = new Mago("Gandalfe", 60, 35, 5)
 
-const arqueiro = new Personagem("Legolas", 80, 25, 12)
+const arqueiro = new Arqueiro("Legolas", 80, 25, 12)
 
 const raven = new Personagem("Raven", 40, 20, 5)
 
@@ -54,9 +78,6 @@ const elara = new Personagem("Elara", 80, 40, 14)
 
 const dante = new Personagem("Dante", 21, 17, 25)
 
-druida.causaDano(mago)
-druida.causaDano(mago)
+guerreiro.golpePesado(mago)
 
 mago.mostrarStatus()
-
-console.log(mago.estaVivo())
