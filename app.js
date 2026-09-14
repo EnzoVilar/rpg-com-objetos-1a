@@ -64,6 +64,16 @@ class Arqueiro extends Personagem {
     }
 }
 
+class Teste extends Personagem {
+    constructor(nome) {
+        super(nome, 80, 35, 15)
+    }
+}
+
+const daniel = new Teste("Daniel")
+
+const igor = new Teste("Igor")
+
 const guerreiro = new Guerreiro("Guerreiro", 80, 25, 15)
 
 const druida = new Personagem("Mago", 60, 35, 8)
@@ -78,6 +88,29 @@ const elara = new Personagem("Elara", 80, 40, 14)
 
 const dante = new Personagem("Dante", 21, 17, 25)
 
-guerreiro.golpePesado(mago)
+const personagens = [
+    daniel,
+    igor,
+    druida,
+    guerreiro,
+    mago,
+    arqueiro
+]
 
-mago.mostrarStatus()
+personagens.forEach(function(personagem) {
+    personagem.mostrarStatus()
+})
+
+let turno = 1
+let jogadorAtual = 0
+
+function proximoTurno() {
+    turno = turno + 1
+    jogadorAtual = jogadorAtual === 0 ? 1 : 0
+}
+
+proximoTurno()
+proximoTurno()
+
+console.log(turno)
+console.log(jogadorAtual)
